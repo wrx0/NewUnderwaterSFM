@@ -63,6 +63,7 @@ public:
      * 输出：
      */
     void getUnderwaterImg(Mat colorImg, Mat depthImg);
+    void Img2match(Mat img1, Mat img2);
 
 
     void underwaterSFM();

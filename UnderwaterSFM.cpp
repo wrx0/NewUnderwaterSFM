@@ -142,7 +142,7 @@ void UnderwaterSFM::getUnderwaterImg(Mat colorImg, Mat depthImg){
         }
     }
     String real_pc = "real_pc"+outputnum_string;
-    savePointCloud(img, Pvec, point_origin2, real_pc);  //这里传递的参数是否对应？
+//    savePointCloud(img, Pvec, point_origin2, real_pc);  //这里传递的参数是否对应？
     cout<<"size of p_vec = "<<_vImg1Point.size()<<endl;
 
     cout<<"imax = "<<vptw.size()/_pointScale<<endl;
@@ -166,6 +166,19 @@ void UnderwaterSFM::getUnderwaterImg(Mat colorImg, Mat depthImg){
     }
     fout.close();
 */
+}
+
+/*
+ * from underwater img to matched points, vector: _vImg1Point
+ * 输入：不同位姿的水下图像
+ * 输出：无
+ * 参数：_vImg1Point，_vImg2Point，两帧图像中的水下2D点对
+ */
+void UnderwaterSFM::Img2match(Mat img1, Mat img2){
+    //1.detect kp
+
+    //2.match kp
+
 }
 
 
@@ -526,6 +539,10 @@ void UnderwaterSFM::mytriangulation(){
     cout<<"estimated 3d data has been saved to estimated3d.txt"<<endl;
 }
 
+/*
+ * 这样写会不知道参数是如何传递的
+ * 若要更改其中某个函数，参数的输入和输出规则不明显，不便于实现不同功能
+ */
 void UnderwaterSFM::runUnderwaterSFM(String outputfilenametxt, Mat colorImg, Mat depthImg){
     getUnderwaterImg(colorImg, depthImg);
     backProjRay();

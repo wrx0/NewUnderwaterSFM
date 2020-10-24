@@ -3,7 +3,7 @@
 #include "UnderwaterSFM.h"
 
 int main() {
-    double n[3] = {1.1, 1.49, 1.0};
+    double n[3] = {1.0, 1.49, 1.0};
     double d[3] = {0, 40, 100};
     Vector3d eularAngle(-0.25*M_PI, -0.05*M_PI, 0.01*M_PI);
     AngleAxisd rollAngle(AngleAxisd(eularAngle(2), Vector3d::UnitX()));
@@ -26,8 +26,9 @@ int main() {
     fstream errornw;
     String txtfilename = to_string(n[0]) +to_string(d[1])+ "underwater_nw_error_p.txt";
     errornw.open(txtfilename, ios::binary | ios::app | ios::in | ios::out);
-    for(int i = 0; i<100; i++){
-        double error_nw = -0.1+i/500.0;
+    for(int i = 0; i<1; i++){
+//        double error_nw = -0.1+i/500.0;
+        double error_nw = 0;
         UnderwaterSFM myunderwater(n, d, R, t, K, isScaleMeter, is_nw_error, pointscale , error_nw);
 //    myunderwater.getUnderwaterImg(img, img_d, vRealPoint);
 //    myunderwater.backProjRay(p_vec1, p_vec2, vrw1, vrw2, vpout1, vpout2);
